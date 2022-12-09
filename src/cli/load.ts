@@ -26,6 +26,9 @@ exports.handler = async (argv: any) => {
     const options = await config(service)
     const adapter = await adapterFactory(service, options)
     const isFull = argv.via.toLowerCase() === 'full'
+    if(typeof argv.ent ==="string"){
+      argv.ent = [argv.ent];
+    }
     await adapter!.load(isFull,argv.ent)
   }
 }
