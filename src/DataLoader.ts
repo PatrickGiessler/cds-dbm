@@ -17,15 +17,17 @@ declare const UPDATE: any
 export class DataLoader {
   private adapter: BaseAdapter
   private isFullMode: boolean
+  private entities: string[]
 
   /**
    *
    * @param adapter
    * @param isFullMode
    */
-  constructor(adapter: BaseAdapter, isFullMode: boolean) {
+  constructor(adapter: BaseAdapter, isFullMode: boolean, entities:string[]) {
     this.adapter = adapter
     this.isFullMode = isFullMode
+    this.entities = entities
   }
 
   /**
@@ -46,7 +48,16 @@ export class DataLoader {
 
     if (folders.size === 0) return
     for (let folder of folders) {
-      const files = await readdir(folder)
+      let files = await readdir(folder)
+      if(this.entities.length>0){
+        let aFilterFiles = [];
+        let aEntities =  this.entities.map((e)=>e+".csv");
+        for (const oEntity of aEntities) {
+            aFilterFiles.push(files.filter((e)=>e.endsWith(oEntity)));
+            let test ="";
+        }
+        files = aFilterFiles.flat();
+    }
       for (let each of files.filter(this._filterCsvFiles.bind(this))) {
         // Verify entity
         let name = each.replace(/-/g, '.').slice(0, -path.extname(each).length)

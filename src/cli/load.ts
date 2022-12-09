@@ -15,12 +15,17 @@ exports.builder = {
     type: String,
     demandOption: true,
   },
+  ent: {
+    alias: 'e',
+    type: array,
+    default:[]
+},
 }
 exports.handler = async (argv: any) => {
   for (const service of argv.service) {
     const options = await config(service)
     const adapter = await adapterFactory(service, options)
     const isFull = argv.via.toLowerCase() === 'full'
-    await adapter!.load(isFull)
+    await adapter!.load(isFull,argv.ent)
   }
 }

@@ -117,9 +117,9 @@ export abstract class BaseAdapter {
    *
    * @param {boolean} isFullMode
    */
-  public async load(isFullMode: boolean = false) {
+  public async load(isFullMode: boolean = false, entities: string[]) {
     await this.initCds()
-    const loader = new DataLoader(this, isFullMode)
+    const loader = new DataLoader(this, isFullMode, entities)
     // TODO: Make more flexible
     await loader.loadFrom(['data', 'csv'])
   }
@@ -261,7 +261,7 @@ export abstract class BaseAdapter {
       this.logger.log(`[cds-dbm] - delta successfully deployed to the database`)
 
       if (loadMode) {
-        await this.load(loadMode.toLowerCase() === 'full')
+        await this.load(loadMode.toLowerCase() === 'full',[])
       }
     } else {
       this.logger.log(updateSQL.stdout)
