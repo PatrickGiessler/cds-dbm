@@ -1,6 +1,6 @@
 {
   "name": "cds-dbm_extend",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "description": "Database deployment and migrations for SAP CAP",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "watch:ts": "tsc -w"
   },
   "bin": {
-    "cds-dbm": "dist/cli.js"
+    "cds-dbm_extend": "dist/cli.js"
   },
   "repository": {
     "type": "git",

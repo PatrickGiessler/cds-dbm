@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.38](https://github.com/mikezaschka/cds-dbm/compare/v0.0.37...v0.0.38) (2023-01-31)
+
 ### 0.0.37 (2022-12-09)
 
 
