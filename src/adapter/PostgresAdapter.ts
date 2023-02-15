@@ -113,7 +113,7 @@ export class PostgresAdapter extends BaseAdapter {
       username: credentials.user || credentials.username,
       password: this.options.service.credentials.password,
       url: url,
-      classpath: `${__dirname}/../../drivers/postgresql-42.3.2.jar`,
+      classpath: `${__dirname}/../../drivers/postgresql-42.5.3.jar`,
       driver: 'org.postgresql.Driver',
     }
 
